@@ -21,7 +21,7 @@ android {
     compileSdkVersion safeExtGet('JitsiMeet_compileSdkVersion', 29)
     buildToolsVersion safeExtGet('JitsiMeet_buildToolsVersion', '29.0.2')
     defaultConfig {
-        minSdkVersion safeExtGet('JitsiMeet_minSdkVersion', 16)
+        minSdkVersion safeExtGet('JitsiMeet_minSdkVersion', 24)
         targetSdkVersion safeExtGet('JitsiMeet_targetSdkVersion', 29)
         versionCode 1
         versionName "1.0"
@@ -55,4 +55,8 @@ repositories {
 dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3.8.0') {
+        transitive = true
+    }
 }

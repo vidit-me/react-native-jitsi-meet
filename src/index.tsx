@@ -1,9 +1,6 @@
 import { NativeModules } from 'react-native';
-
-type JitsiMeetType = {
-  multiply(a: number, b: number): Promise<number>;
-};
+import type { JitsiMeetInterface } from './types';
 
 const { JitsiMeet } = NativeModules;
 
-export default JitsiMeet as JitsiMeetType;
+export default JitsiMeet as JitsiMeetInterface;

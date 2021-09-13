@@ -1,5 +1,6 @@
 package com.example.reactnativejitsimeet;
 
+import androidx.annotation.Nullable;
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
@@ -34,6 +35,11 @@ public class MainApplication extends Application implements ReactApplication {
         @Override
         protected String getJSMainModuleName() {
           return "index";
+        }
+
+        @Override
+        protected @Nullable String getBundleAssetName() {
+          return "app.bundle";
         }
       };
 

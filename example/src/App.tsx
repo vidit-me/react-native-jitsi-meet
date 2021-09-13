@@ -1,18 +1,23 @@
-import * as React from 'react';
-
-import { StyleSheet, View, Text } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import JitsiMeet from 'react-native-jitsi-meet';
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    JitsiMeet.multiply(3, 7).then(setResult);
-  }, []);
+  const onPress = () => {
+    JitsiMeet.launchJitsiMeetView('ReactNativeJitsiRoom', {
+      userInfo: {
+        displayName: 'React Native Jitsi Meet Example',
+        email: 'example@test.com',
+        avatar: 'https://picsum.photos/200',
+      },
+    });
+  };
 
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <TouchableOpacity onPress={onPress} style={styles.pressable}>
+        <Text style={styles.pressableText}>Launch</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -23,9 +28,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  pressable: {
+    width: '50%',
+    borderRadius: 15,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'blue',
+  },
+  pressableText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
   },
 });
