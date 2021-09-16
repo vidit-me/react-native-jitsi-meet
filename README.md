@@ -20,12 +20,12 @@ The following code is an example of use:
 import JitsiMeet from 'react-native-jitsi-meet';
 
 JitsiMeet.launch('room', {
-      serverUrl: 'https://meet.jit.si',
-      userInfo: {
-        displayName: 'React Native Jitsi Meet Example',
-        email: 'example@test.com',
-        avatar: 'https://picsum.photos/200',
-      },
+  serverUrl: 'https://meet.jit.si',
+  userInfo: {
+    displayName: 'React Native Jitsi Meet Example',
+    email: 'example@test.com',
+    avatar: 'https://picsum.photos/200',
+  },
 });
 ```
 
