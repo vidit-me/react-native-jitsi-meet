@@ -6,9 +6,11 @@ React Native Wrapper for Jitsi Meet SDK.
 
 `yarn add react-native-jitsi-meet`
 
+`npx pod-install`
+
 Only support React Native >= 0.60.
 
-Although most of the process is automated, you still have to follow the platform install guide below ([iOS](#ios-install-for-rn--060) and [Android](#android-install)) to get this library to work.
+Although most of the process is automated, you still have to follow the platform install guide below ([iOS](#ios-install) and [Android](#android-install)) to get this library to work.
 
 ## Usage
 
@@ -27,13 +29,19 @@ JitsiMeet.launchJitsiMeetView('room', {
 });
 ```
 
-You can also check the [ExampleApp](https://github.com/skrafft/react-native-jitsi-meet/tree/master/ExampleApp)
+You can also check the [ExampleApp](https://github.com/bortolilucas/react-native-jitsi-meet/tree/master/example)
 
 ## iOS Install
 
-This library uses Swift code, so make sure that you have created the Objective-C bridging header file. If not, open your project in Xcode and create an empty Swift file. Xcode will ask if you wish to create the bridging header file, please choose yes.
+1.) This library uses Swift code, so make sure that you have created the `Objective-C bridging header file`.
 
-1.) Replace the following code in AppDelegate.m:
+If not, open your project in Xcode and create an empty Swift file.
+
+Xcode will ask if you wish to create the bridging header file, please choose yes.
+
+For more information check [Create Objective-C bridging header file](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift)
+
+2.) Replace the following code in AppDelegate.m:
 
 ```
 UIViewController *rootViewController = [UIViewController new];
@@ -53,7 +61,7 @@ self.window.rootViewController = navigationController;
 
 This will create a navigation controller to be able to navigate between the Jitsi component and your react native screens.
 
-2.) Add the following lines to your `Info.plist`
+3.) Add the following lines to your `Info.plist`
 
 ```
 <key>NSCameraUsageDescription</key>
@@ -64,13 +72,13 @@ This will create a navigation controller to be able to navigate between the Jits
 <string>Calendar Permission</string>
 ```
 
-3.) Modify your platform version in Podfile and Xcode to have platform version `11.0`
+4.) Modify your platform version in Podfile and Xcode to have platform version `11.0` or above
 
-4.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
+5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
 
-5.) In Xcode, under `Signing & Capabilities` add `Background Modes` and check `Voice over ip`. Otherwise, it won't work well in background.
+6.) In Xcode, under `Signing & Capabilities` add the capability `Background Modes` and check `Voice over ip`. Otherwise, it won't work well in background.
 
-6.) Run `pod install`
+7.) Clean your project and run `npx pod-install`
 
 ## Android Install
 
@@ -142,18 +150,18 @@ allprojects {
 If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsi-meet project implementation with the following code (even if you're app uses autolinking with RN > 0.60):
 
 ```
-    implementation(project(':react-native-jitsi-meet')) {
-      // Un-comment below if using hermes
-      // exclude group: 'com.facebook',module:'hermes'
-      // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
-      // exclude group: 'com.facebook.react',module:'react-native-locale-detector'
-      // exclude group: 'com.facebook.react',module:'react-native-vector-icons'
-      // exclude group: 'com.facebook.react',module:'react-native-community-async-storage'
-      // exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
-      // exclude group: 'com.facebook.react',module:'react-native-svg'
-      // exclude group: 'com.facebook.react',module:'react-native-fetch-blob'
-      // exclude group: 'com.facebook.react',module:'react-native-webview'
-      // exclude group: 'com.facebook.react',module:'react-native-linear-gradient'
-      // exclude group: 'com.facebook.react',module:'react-native-sound'
-    }
+implementation(project(':react-native-jitsi-meet')) {
+  // Un-comment below if using hermes
+  // exclude group: 'com.facebook',module:'hermes'
+  // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
+  // exclude group: 'com.facebook.react',module:'react-native-locale-detector'
+  // exclude group: 'com.facebook.react',module:'react-native-vector-icons'
+  // exclude group: 'com.facebook.react',module:'react-native-community-async-storage'
+  // exclude group: 'com.facebook.react',module:'react-native-community_netinfo'
+  // exclude group: 'com.facebook.react',module:'react-native-svg'
+  // exclude group: 'com.facebook.react',module:'react-native-fetch-blob'
+  // exclude group: 'com.facebook.react',module:'react-native-webview'
+  // exclude group: 'com.facebook.react',module:'react-native-linear-gradient'
+  // exclude group: 'com.facebook.react',module:'react-native-sound'
+}
 ```
