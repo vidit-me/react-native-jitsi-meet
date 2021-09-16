@@ -2,7 +2,7 @@
 
 @interface RCT_EXTERN_MODULE(JitsiMeet, NSObject)
 RCT_EXTERN_METHOD(
-  launchJitsiMeetView:(NSString)room 
+  launch:(NSString)room 
   withOptions:(NSDictionary)options
 )
 @end

@@ -3,7 +3,7 @@ import JitsiMeetSDK
 
 @objc(JitsiMeet)
 class JitsiMeet: NSObject {
-  @objc func launchJitsiMeetView(_ room: NSString, withOptions options: NSDictionary) {
+  @objc func launch(_ room: NSString, withOptions options: NSDictionary) {
     let conferenceOptions = JitsiMeetConferenceOptions.fromBuilder { (builder) in
       builder.room = room as String
       

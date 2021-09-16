@@ -30,5 +30,5 @@ interface JitsiMeetConferenceOptions {
 }
 
 export interface JitsiMeetInterface {
-  launchJitsiMeetView(room: string, options: JitsiMeetConferenceOptions): void;
+  launch(room: string, options: JitsiMeetConferenceOptions): void;
 }

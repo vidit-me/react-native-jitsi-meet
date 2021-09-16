@@ -29,7 +29,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void launchJitsiMeetView(String room, ReadableMap options) {
+    public void launch(String room, ReadableMap options) {
         JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
         if (room != null) {

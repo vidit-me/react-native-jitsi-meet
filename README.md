@@ -4,9 +4,9 @@ React Native Wrapper for Jitsi Meet SDK.
 
 ## Install
 
-`yarn add react-native-jitsi-meet`
+`yarn add react-native-jitsi-meet`.
 
-`npx pod-install`
+`npx pod-install`.
 
 Only support React Native >= 0.60.
 
@@ -19,7 +19,7 @@ The following code is an example of use:
 ```
 import JitsiMeet from 'react-native-jitsi-meet';
 
-JitsiMeet.launchJitsiMeetView('room', {
+JitsiMeet.launch('room', {
       serverUrl: 'https://meet.jit.si',
       userInfo: {
         displayName: 'React Native Jitsi Meet Example',
@@ -29,7 +29,7 @@ JitsiMeet.launchJitsiMeetView('room', {
 });
 ```
 
-You can also check the [ExampleApp](https://github.com/bortolilucas/react-native-jitsi-meet/tree/master/example)
+You can also check the [ExampleApp](https://github.com/bortolilucas/react-native-jitsi-meet/tree/master/example).
 
 ## iOS Install
 
@@ -39,7 +39,7 @@ If not, open your project in Xcode and create an empty Swift file.
 
 Xcode will ask if you wish to create the bridging header file, please choose yes.
 
-For more information check [Create Objective-C bridging header file](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift)
+For more information check [Create Objective-C bridging header file](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift).
 
 2.) Replace the following code in AppDelegate.m:
 
@@ -72,13 +72,13 @@ This will create a navigation controller to be able to navigate between the Jits
 <string>Calendar Permission</string>
 ```
 
-4.) Modify your platform version in Podfile and Xcode to have platform version `11.0` or above
+4.) Modify your platform version in Podfile and Xcode to have platform version `11.0` or above.
 
-5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`
+5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
 6.) In Xcode, under `Signing & Capabilities` add the capability `Background Modes` and check `Voice over ip`. Otherwise, it won't work well in background.
 
-7.) Clean your project and run `npx pod-install`
+7.) Clean your project and run `npx pod-install`.
 
 ## Android Install
 

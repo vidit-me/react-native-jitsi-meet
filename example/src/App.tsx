@@ -4,7 +4,7 @@ import JitsiMeet from 'react-native-jitsi-meet';
 
 export default function App() {
   const onPress = () => {
-    JitsiMeet.launchJitsiMeetView('ReactNativeJitsiRoom', {
+    JitsiMeet.launch('ReactNativeJitsiRoom', {
       userInfo: {
         displayName: 'React Native Jitsi Meet Example',
         email: 'example@test.com',
