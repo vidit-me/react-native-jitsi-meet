@@ -228,7 +228,7 @@ See [Options](#options) for further information.
 
 ## Screen Sharing
 
-Screen sharing is already implemented by default on Android. But on iOS, it requires some extra configuration.
+Screen sharing is already working by default on Android. But on iOS, it requires some extra configuration.
 
 Follow this tutorial for implementation [Screen Sharing iOS](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ios-sdk#screen-sharing-integration).
 
