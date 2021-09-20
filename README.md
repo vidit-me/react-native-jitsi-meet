@@ -196,27 +196,35 @@ See [Options](#options) for further information.
 
 ## Options
 
-| key                    | Data type | Default                             | Description                                                                                                                |
-| ---------------------- | --------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| room                   | String    | required                            | Room name for Jitsi Meet                                                                                                   |
-| serverUrl              | String    | https://meet.jit.si                 | Valid server url                                                                                                           |
-| token                  | String    | ""                                  | JWT token                                                                                                                  |
-| userInfo               | Object    | {}                                  | This can have three keys as follows ` userInfo:{ displayName: "name", email: "test@example.com", avatarURL: "valid URL" }` |
-| screenSharingEnabled   | boolean   | true (android) false (iOS)          | Flag indicating if screen sharing should be enabled                                                                        |
-| conferenceTimerEnabled | boolean   | true                                | Flag indicating if conference timer should be enabled                                                                      |
-| addPeopleEnabled       | boolean   | true                                | Flag indicating if add-people functionality should be enabled                                                              |
-| calendarEnabled        | boolean   | true (android) auto-detected (iOS)  | Flag indicating if calendar integration should be enabled                                                                  |
-| inviteEnabled          | boolean   | true                                | Flag indicating if invite functionality should be enabled                                                                  |
-| meetingPasswordEnabled | boolean   | true                                | Flag indicating if the meeting password button should be enabled                                                           |
-| recordingEnabled       | boolean   | auto-detected (android) false (iOS) | Flag indicating if recording should be enabled                                                                             |
-| liveStreamingEnabled   | boolean   | auto-detected                       | Flag indicating if live-streaming should be enabled                                                                        |
-| raiseHandEnabled       | boolean   | true                                | Flag indicating if raise hand feature should be enabled                                                                    |
-| serverUrlChangeEnabled | boolean   | true                                | Flag indicating if server URL change is enabled                                                                            |
-| videoShareEnabled      | boolean   | true                                | Flag indicating if the video share button should be enabled                                                                |
-| securityOptionsEnabled | boolean   | true                                | Flag indicating if the security options button should be enabled                                                           |
-| chatEnabled            | boolean   | true                                | Flag indicating if chat should be enabled                                                                                  |
-| lobbyModeEnabled       | boolean   | true                                | Flag indicating if lobby mode button should be enabled                                                                     |
-| pipEnabled             | boolean   | true (android)                      | Flag indicating if Picture-in-Picture should be enabled (only Android)                                                     |
+| key                    | Data type | Default                             | Description                                                                                            |
+| ---------------------- | --------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| room                   | string    | required                            | Room name for Jitsi Meet                                                                               |
+| serverUrl              | string    | https://meet.jit.si                 | Valid server URL                                                                                       |
+| token                  | string    | ""                                  | JWT token                                                                                              |
+| userInfo               | object    | {}                                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo) |
+| screenSharingEnabled   | boolean   | true (android) false (iOS)          | Flag indicating if screen sharing should be enabled                                                    |
+| conferenceTimerEnabled | boolean   | true                                | Flag indicating if conference timer should be enabled                                                  |
+| addPeopleEnabled       | boolean   | true                                | Flag indicating if add-people functionality should be enabled                                          |
+| calendarEnabled        | boolean   | true (android) auto-detected (iOS)  | Flag indicating if calendar integration should be enabled                                              |
+| inviteEnabled          | boolean   | true                                | Flag indicating if invite functionality should be enabled                                              |
+| meetingPasswordEnabled | boolean   | true                                | Flag indicating if the meeting password button should be enabled                                       |
+| recordingEnabled       | boolean   | auto-detected (android) false (iOS) | Flag indicating if recording should be enabled                                                         |
+| liveStreamingEnabled   | boolean   | auto-detected                       | Flag indicating if live-streaming should be enabled                                                    |
+| raiseHandEnabled       | boolean   | true                                | Flag indicating if raise hand feature should be enabled                                                |
+| serverUrlChangeEnabled | boolean   | true                                | Flag indicating if server URL change is enabled                                                        |
+| videoShareEnabled      | boolean   | true                                | Flag indicating if the video share button should be enabled                                            |
+| securityOptionsEnabled | boolean   | true                                | Flag indicating if the security options button should be enabled                                       |
+| chatEnabled            | boolean   | true                                | Flag indicating if chat should be enabled                                                              |
+| lobbyModeEnabled       | boolean   | true                                | Flag indicating if lobby mode button should be enabled                                                 |
+| pipEnabled             | boolean   | true (android)                      | Flag indicating if Picture-in-Picture should be enabled (only Android)                                 |
+
+## UserInfo
+
+| key         | Data type | Default | Description              |
+| ----------- | --------- | ------- | ------------------------ |
+| displayName | string    | ""      | Participant's name       |
+| email       | string    | ""      | Participant's e-mail     |
+| avatar      | string    | ""      | Participant's avatar URL |
 
 ## Screen Sharing
 
