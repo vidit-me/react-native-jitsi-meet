@@ -11,7 +11,6 @@ or
 
 yarn add react-native-jitsi-meet-extended
 
-
 npx pod-install
 ```
 
