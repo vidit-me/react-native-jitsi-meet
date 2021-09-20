@@ -1,10 +1,11 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import JitsiMeet from 'react-native-jitsi-meet';
+import JitsiMeet from 'react-native-jitsimeet';
 
 export default function App() {
   const onPress = () => {
-    JitsiMeet.launch('ReactNativeJitsiRoom', {
+    JitsiMeet.launch({
+      room: 'ReactNativeJitsiRoom',
       userInfo: {
         displayName: 'React Native Jitsi Meet Example',
         email: 'example@test.com',

@@ -29,10 +29,10 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
-    public void launch(String room, ReadableMap options) {
+    public void launch(ReadableMap options) {
         JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
-        if (room != null) {
+        if (options.hasKey("room")) {
             builder.setRoom(room);
         } else {
             throw new RuntimeException("Room must not be empty");
@@ -73,18 +73,6 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
         if (options.hasKey("token")) {
             builder.setToken(options.getString("token"));
-        }
-
-        if (options.hasKey("audioMuted")) {
-            builder.setAudioMuted(options.getBoolean("audioMuted"));
-        }
-
-        if (options.hasKey("videoMuted")) {
-            builder.setVideoMuted(options.getBoolean("videoMuted"));
-        }
-
-        if (options.hasKey("audioOnly")) {
-            builder.setAudioOnly(options.getBoolean("audioOnly"));
         }
 
         if (options.hasKey("conferenceTimerEnabled")) {

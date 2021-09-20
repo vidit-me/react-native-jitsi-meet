@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
-      "react-native-jitsi-meet": ["./src/index"]
+      "react-native-jitsimeet": ["./src/index"]
     },
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,

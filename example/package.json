@@ -1,6 +1,6 @@
 {
-  "name": "react-native-jitsi-meet-example",
-  "description": "Example app for react-native-jitsi-meet",
+  "name": "react-native-jitsimeet-example",
+  "description": "Example app for react-native-jitsimeet",
   "version": "0.0.1",
   "private": true,
   "scripts": {

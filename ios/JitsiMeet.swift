@@ -3,9 +3,13 @@ import JitsiMeetSDK
 
 @objc(JitsiMeet)
 class JitsiMeet: NSObject {
-  @objc func launch(_ room: NSString, withOptions options: NSDictionary) {
+  @objc func launch(_ options: NSDictionary) {
     let conferenceOptions = JitsiMeetConferenceOptions.fromBuilder { (builder) in
-      builder.room = room as String
+      guard let room = options["room"] as? String else {
+        fatalError("Room must no be empty")
+      }
+
+      builder.room = room
       
       builder.serverURL = URL(string: (options["serverUrl"] as? String) ?? "https://meet.jit.si")
       
@@ -29,18 +33,6 @@ class JitsiMeet: NSObject {
       
       if let token = options["token"] as? String {
         builder.token = token
-      }
-      
-      if let audioMuted = options["audioMuted"] as? Bool {
-        builder.setAudioMuted(audioMuted)
-      }
-      
-      if let videoMuted = options["videoMuted"] as? Bool {
-        builder.setVideoMuted(videoMuted)
-      }
-      
-      if let audioOnly = options["audioOnly"] as? Bool {
-        builder.setAudioOnly(audioOnly)
       }
       
       if let screenSharingEnabled = options["screenSharingEnabled"] as? Bool {

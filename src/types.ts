@@ -1,16 +1,14 @@
-interface JitsiMeetUserInfo {
+export interface JitsiMeetUserInfo {
   displayName?: string;
   email?: string;
   avatar?: string;
 }
 
-interface JitsiMeetConferenceOptions {
+export interface JitsiMeetConferenceOptions {
+  room: string;
   serverUrl?: string;
   userInfo?: JitsiMeetUserInfo;
   token?: string;
-  audioMuted?: boolean;
-  videoMuted?: boolean;
-  audioOnly?: boolean;
   screenSharingEnabled?: boolean;
   conferenceTimerEnabled?: boolean;
   closeCaptionsEnabled?: boolean;
@@ -30,5 +28,5 @@ interface JitsiMeetConferenceOptions {
 }
 
 export interface JitsiMeetInterface {
-  launch(room: string, options: JitsiMeetConferenceOptions): void;
+  launch: (options: JitsiMeetConferenceOptions) => void;
 }
