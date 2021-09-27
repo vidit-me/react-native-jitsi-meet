@@ -5,11 +5,11 @@ React Native Wrapper for Jitsi Meet SDK.
 ## Install
 
 ```sh
-npm install react-native-jitsi-meet-extended
+npm install @bortolilucas/react-native-jitsimeet
 
 or
 
-yarn add react-native-jitsi-meet-extended
+yarn add @bortolilucas/react-native-jitsimeet
 
 npx pod-install
 ```
