@@ -14,7 +14,7 @@ yarn add react-native-jitsi-meet-extended
 npx pod-install
 ```
 
-Only support React Native >= 0.60.
+Only supports React Native >= 0.60.
 
 ## iOS install
 
@@ -227,9 +227,9 @@ See [Options](#options) for further information.
 
 ## Screen Sharing
 
-Screen sharing is already working by default on Android. But on iOS, it requires some extra configuration.
+It is already enabled by default on Android.
 
-Follow this tutorial for implementation [Screen Sharing iOS](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ios-sdk#screen-sharing-integration).
+On iOS it requires a few extra steps. Set the flag `screenSharingEnabled` to true and follow this tutorial [Screen Sharing iOS](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ios-sdk#screen-sharing-integration) to get it working.
 
 ### Side-note
 
