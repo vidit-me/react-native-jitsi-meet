@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
-import JitsiMeet from 'react-native-jitsimeet';
+import JitsiMeet from '@bortolilucas/react-native-jitsimeet';
 
 export default function App() {
   const onPress = () => {
