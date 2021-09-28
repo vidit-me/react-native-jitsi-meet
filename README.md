@@ -7,7 +7,9 @@ React Native Wrapper for Jitsi Meet SDK.
 ```sh
 yarn add @bortolilucas/react-native-jitsimeet
 
-npx pod-install
+or
+
+npm i --save @bortolilucas/react-native-jitsimeet
 ```
 
 Only supports React Native >= 0.60.
@@ -176,7 +178,7 @@ buildscript {
 ## API Reference
 
 ```js
-import JitsiMeet from 'react-native-jitsimeet';
+import JitsiMeet from '@bortolilucas/react-native-jitsimeet';
 ```
 
 ### `launch()`
