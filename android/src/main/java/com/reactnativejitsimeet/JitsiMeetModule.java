@@ -33,7 +33,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
         JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
         if (options.hasKey("room")) {
-            builder.setRoom(room);
+            builder.setRoom(options.getString("room"));
         } else {
             throw new RuntimeException("Room must not be empty");
         }
