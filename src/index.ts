@@ -1,6 +1,11 @@
-import { NativeModules } from 'react-native';
-import type { JitsiMeetInterface } from './types';
+import { NativeModules, requireNativeComponent } from 'react-native';
+import type { JitsiMeetType, JitsiMeetViewType } from './types';
 
 const { JitsiMeet } = NativeModules;
 
-export default JitsiMeet as JitsiMeetInterface;
+const JitsiMeetView: JitsiMeetViewType =
+  requireNativeComponent('JitsiMeetView');
+
+export { JitsiMeetView };
+
+export default JitsiMeet as JitsiMeetType;

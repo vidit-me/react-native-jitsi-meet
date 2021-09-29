@@ -186,7 +186,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-jitsimeet (0.1.0):
+  - react-native-jitsimeet (1.0.3):
     - JitsiMeetSDK (= 3.8.1)
     - React-Core
   - React-RCTActionSheet (0.63.4):
@@ -361,7 +361,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-jitsimeet: 0a93a86d114b4366ba547835cbdc0688181f3bba
+  react-native-jitsimeet: 7198bd525981cf53525178685389fdba5aafc1e7
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -376,4 +376,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: abaaacdae969cdd184fd6aa3f04d1f38fce1b2c0
 
-COCOAPODS: 1.10.2
+COCOAPODS: 1.11.2
