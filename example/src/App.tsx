@@ -9,6 +9,7 @@ const conferenceOptions = {
     email: 'example@test.com',
     avatar: 'https://picsum.photos/200',
   },
+  pipEnabled: false,
 };
 
 function App() {
@@ -23,16 +24,15 @@ function App() {
   };
 
   const startJitsiViewAsRNView = () => {
-    /* 
-      Use it to start a Jitsi Meet View as a RN View (inside JS).
-      It requires rendering JitsiMeetView Component.
-    */
     setShowJitsiView(true);
   };
 
   const onConferenceTerminated = () => setShowJitsiView(false);
 
   if (showJitsiView) {
+    /* 
+      Use it to start a Jitsi Meet View as a RN View (inside JS).
+    */
     return (
       <JitsiMeetView
         style={styles.jitsiMeetView}

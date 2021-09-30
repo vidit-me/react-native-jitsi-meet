@@ -34,8 +34,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
     }
 
     private void handlePictureInPicture() {
-        JitsiMeetConferenceOptions conferenceOptions = (JitsiMeetConferenceOptions) getIntent()
-                .getParcelableExtra("JitsiMeetConferenceOptions");
+        JitsiMeetConferenceOptions conferenceOptions = (JitsiMeetConferenceOptions)getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
 
         if (conferenceOptions != null) {
             Bundle flags = conferenceOptions.getFeatureFlags();
