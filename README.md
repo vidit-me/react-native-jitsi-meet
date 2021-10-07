@@ -14,14 +14,66 @@ npm i --save @bortolilucas/react-native-jitsimeet
 
 Only supports React Native >= 0.60.
 
-## Modes
+## Usage
 
 The package can be invoked in two modes
 
 1. As a new Activity/UIViewController on top of RN Application
 2. As a view inside the RN Application
 
-See more [here](#usage)
+```js
+import JitsiMeet, { JitsiMeetView } from '@bortolilucas/react-native-jitsimeet';
+import React, { useState } from 'react';
+import { StyleSheet } from 'react-native';
+
+const conferenceOptions = {
+  room: 'ReactNativeJitsiRoom',
+  userInfo: {
+    displayName: 'React Native Jitsi Meet Example',
+    email: 'example@test.com',
+    avatar: 'https://picsum.photos/200',
+  },
+  pipEnabled: false,
+};
+
+function App() {
+  const [showJitsiView, setShowJitsiView] = useState(false);
+
+  const startJitsiAsNativeController = () => {
+    /* 
+      Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS). It doesn't require rendering JitsiMeetView Component.  
+    */
+    JitsiMeet.launch(conferenceOptions);
+  };
+
+  const startJitsiView = () => {
+    setShowJitsiView(true);
+  };
+
+  const onConferenceTerminated = () => setShowJitsiView(false);
+
+  return (
+    showJitsiView && (
+      /* Mode 2 - Starts Jitsi as a RN View */
+      <JitsiMeetView
+        style={styles.jitsiMeetView}
+        options={conferenceOptions}
+        onConferenceTerminated={onConferenceTerminated}
+      />
+    )
+  );
+}
+
+const styles = StyleSheet.create({
+  jitsiMeetView: {
+    flex: 1,
+  },
+});
+
+export default App;
+```
+
+See [Options](#options) for further information.
 
 ## iOS install
 
@@ -183,62 +235,6 @@ buildscript {
     </application>
 </manifest>
 ```
-
-## Usage
-
-```js
-import JitsiMeet, { JitsiMeetView } from '@bortolilucas/react-native-jitsimeet';
-import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
-
-const conferenceOptions = {
-  room: 'ReactNativeJitsiRoom',
-  userInfo: {
-    displayName: 'React Native Jitsi Meet Example',
-    email: 'example@test.com',
-    avatar: 'https://picsum.photos/200',
-  },
-  pipEnabled: false,
-};
-
-function App() {
-  const [showJitsiView, setShowJitsiView] = useState(false);
-
-  const startJitsiAsNativeController = () => {
-    /* 
-      Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS). It doesn't require rendering JitsiMeetView Component.  
-    */
-    JitsiMeet.launch(conferenceOptions);
-  };
-
-  const startJitsiView = () => {
-    setShowJitsiView(true);
-  };
-
-  const onConferenceTerminated = () => setShowJitsiView(false);
-
-  return (
-    showJitsiView && (
-      /* Mode 2 - Starts Jitsi as a RN View */
-      <JitsiMeetView
-        style={styles.jitsiMeetView}
-        options={conferenceOptions}
-        onConferenceTerminated={onConferenceTerminated}
-      />
-    )
-  );
-}
-
-const styles = StyleSheet.create({
-  jitsiMeetView: {
-    flex: 1,
-  },
-});
-
-export default App;
-```
-
-See [Options](#options) for further information.
 
 ## Options
 
