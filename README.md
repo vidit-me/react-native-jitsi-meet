@@ -43,7 +43,7 @@ function App() {
     /* 
       Mode 1 - Starts a new Jitsi Activity/UIViewController 
       on top of RN Application (outside of JS). 
-      It doesn't require rendering JitsiMeetView Component.  
+      It doesn't require rendering <JitsiMeetView />.  
     */
     JitsiMeet.launch(conferenceOptions);
   };
