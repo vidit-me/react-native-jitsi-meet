@@ -1,6 +1,6 @@
 {
   "name": "@bortolilucas/react-native-jitsimeet",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "React native Wrapper for Jitsi Meet SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
