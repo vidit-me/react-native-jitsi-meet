@@ -15,24 +15,22 @@ const conferenceOptions = {
 function App() {
   const [showJitsiView, setShowJitsiView] = useState(false);
 
-  const startJitsiViewOnTop = () => {
+  const startJitsiAsNativeController = () => {
     /* 
-      Use it to start a Jitsi Meet View on top of RN Application (outside of JS).
+      Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS).
       It doesn't require rendering JitsiMeetView Component.  
     */
     JitsiMeet.launch(conferenceOptions);
   };
 
-  const startJitsiViewAsRNView = () => {
+  const startJitsiView = () => {
     setShowJitsiView(true);
   };
 
   const onConferenceTerminated = () => setShowJitsiView(false);
 
   if (showJitsiView) {
-    /* 
-      Use it to start a Jitsi Meet View as a RN View (inside JS).
-    */
+    /* Mode 2 - Starts Jitsi as a RN View */
     return (
       <JitsiMeetView
         style={styles.jitsiMeetView}
@@ -45,7 +43,7 @@ function App() {
   return (
     <View style={styles.container}>
       <Pressable
-        onPress={startJitsiViewOnTop}
+        onPress={startJitsiAsNativeController}
         style={({ pressed }) => [
           styles.pressable,
           { opacity: pressed ? 0.5 : 1 },
@@ -56,7 +54,7 @@ function App() {
         </Text>
       </Pressable>
       <Pressable
-        onPress={startJitsiViewAsRNView}
+        onPress={startJitsiView}
         style={({ pressed }) => [
           styles.pressable,
           { opacity: pressed ? 0.5 : 1 },
