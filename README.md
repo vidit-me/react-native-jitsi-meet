@@ -128,7 +128,7 @@ This will create a navigation controller to be able to navigate between the Jits
 
 ### Important
 
-There seems to be an issue with `React Native 0.64` and Jitsi SDK, as buttons are unresponsive and other bugs, so until the issue is sorted out it is advised to use the `React Native 0.63`
+There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons doesn't respond and other bugs, so until the issue is sorted out it is advised to use the `RN 0.63`
 
 1.) In `android/app/build.gradle`, add/replace the following lines:
 
