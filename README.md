@@ -41,14 +41,14 @@ function App() {
 
   const startJitsiAsNativeController = () => {
     /* 
-      Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS). It doesn't require rendering JitsiMeetView Component.  
+      Mode 1 - Starts a new Jitsi Activity/UIViewController 
+      on top of RN Application (outside of JS). 
+      It doesn't require rendering JitsiMeetView Component.  
     */
     JitsiMeet.launch(conferenceOptions);
   };
 
-  const startJitsiView = () => {
-    setShowJitsiView(true);
-  };
+  const startJitsiView = () => setShowJitsiView(true);
 
   const onConferenceTerminated = () => setShowJitsiView(false);
 
@@ -85,7 +85,7 @@ Xcode will ask if you wish to create the bridging header file, please choose yes
 
 For more information check [Create Objective-C bridging header file](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift).
 
-2.) Replace the following code in AppDelegate.m (step only required for invoking as a new UIViewController):
+2.) Replace the following code in AppDelegate.m (ONLY required for invoking as a new UIViewController):
 
 ```objective-c
 UIViewController *rootViewController = [UIViewController new];
@@ -178,7 +178,7 @@ allprojects {
 }
 ```
 
-4.) In the `<application>` section of `android/app/src/main/AndroidManifest.xml`, add (step only required for invoking as a new Activity)
+4.) In the `<application>` section of `android/app/src/main/AndroidManifest.xml`, add (ONLY required for invoking as a new Activity)
 
 ```xml
 <activity
