@@ -19,7 +19,7 @@ Only supports React Native >= 0.60.
 The package can be invoked in two modes
 
 1. As a new Activity/UIViewController on top of RN Application
-2. As a view inside the RN Application
+2. As a RN View
 
 ```js
 import JitsiMeet, { JitsiMeetView } from '@bortolilucas/react-native-jitsimeet';
@@ -128,7 +128,7 @@ This will create a navigation controller to be able to navigate between the Jits
 
 ### Important
 
-There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons doesn't respond and other bugs, so until the issue is sorted out it is advised to use the `RN 0.63`
+There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons dont't respond and other bugs, so until the issue is sorted out it is advised to use the `RN 0.63`
 
 1.) In `android/app/build.gradle`, add/replace the following lines:
 
@@ -274,7 +274,7 @@ It is already enabled by default on Android.
 
 On iOS it requires a few extra steps. Set the flag `screenSharingEnabled` to true and follow this tutorial [Screen Sharing iOS](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ios-sdk#screen-sharing-integration) to get it working.
 
-### Side-note
+### Troubleshooting
 
 If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsimeet project implementation with the following code:
 
