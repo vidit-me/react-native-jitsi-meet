@@ -85,7 +85,7 @@ Xcode will ask if you wish to create the bridging header file, please choose yes
 
 For more information check [Create Objective-C bridging header file](https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift).
 
-2.) Replace the following code in AppDelegate.m (ONLY required for invoking as a new UIViewController):
+2.) Replace the following code in AppDelegate.m (ONLY required for mode 1. If you're using mode 2, skip this step):
 
 ```objective-c
 UIViewController *rootViewController = [UIViewController new];
@@ -178,7 +178,7 @@ allprojects {
 }
 ```
 
-4.) In the `<application>` section of `android/app/src/main/AndroidManifest.xml`, add (ONLY required for invoking as a new Activity)
+4.) In the `<application>` section of `android/app/src/main/AndroidManifest.xml`, add (ONLY required for mode 1. If you're using mode 2, skip this step)
 
 ```xml
 <activity
