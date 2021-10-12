@@ -34,7 +34,10 @@
   "keywords": [
     "react-native",
     "ios",
-    "android"
+    "android",
+    "jitsi",
+    "meet",
+    "sdk"
   ],
   "repository": "https://github.com/bortolilucas/react-native-jitsimeet",
   "author": "Lucas Bortoli <lucasbortolidev@gmail.com> (https://github.com/bortolilucas)",
