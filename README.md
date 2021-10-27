@@ -274,7 +274,37 @@ It is already enabled by default on Android.
 
 On iOS it requires a few extra steps. Set the flag `screenSharingEnabled` to true and follow this tutorial [Screen Sharing iOS](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-ios-sdk#screen-sharing-integration) to get it working.
 
-### Troubleshooting
+## Instructions to run the example app
+
+1.) Clone this project
+
+```bash
+git clone https://github.com/bortolilucas/react-native-jitsimeet.git
+```
+
+2.) Navigate to the project folder
+
+```bash
+cd react-native-jitsimeet
+```
+
+3.) Install dependencies
+
+```bash
+yarn
+```
+
+4.) Run app
+
+```bash
+yarn example ios
+
+or
+
+yarn example android
+```
+
+## Troubleshooting
 
 If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsimeet project implementation with the following code:
 
