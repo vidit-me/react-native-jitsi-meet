@@ -118,6 +118,10 @@ This will create a navigation controller to be able to navigate between the Jits
 
 4.) Modify your platform version in Podfile and Xcode to have platform version `11.0` or above.
 
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-12%20a%CC%80s%2000.13.47.png?alt=media&token=94b05c65-57e8-44ed-ab8f-5aca47a4e420)
+
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-12%20a%CC%80s%2000.12.52.png?alt=media&token=498ce1cd-1b4e-4f42-845e-9adcce6e3d5f)
+
 5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
 6.) In Xcode, under `Signing & Capabilities` add the capability `Background Modes` and check `VoIP`. Otherwise, it won't work well in background.
