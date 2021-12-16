@@ -135,6 +135,10 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
             builder.setFeatureFlag("android.screensharing.enabled", options.getBoolean("screenSharingEnabled"));
         }
 
+        if (options.hasKey("speakerstatsEnabled")) {
+          builder.setFeatureFlag("speakerstats.enabled", options.getBoolean("speakerstatsEnabled"));
+        }
+
         builder.setFeatureFlag("pip.enabled", !options.hasKey("pipEnabled") || options.getBoolean("pipEnabled"));
 
         JitsiMeetActivityExtended.launch(getReactApplicationContext(), builder.build());
