@@ -262,6 +262,8 @@ buildscript {
 | securityOptionsEnabled | boolean   | true                                | Flag indicating if the security options button should be enabled                                       |
 | chatEnabled            | boolean   | true                                | Flag indicating if chat should be enabled                                                              |
 | lobbyModeEnabled       | boolean   | true                                | Flag indicating if lobby mode button should be enabled                                                 |
+| speakerstatsEnabled    | boolean   | true                                | Flag indicating if speaker statistics should be enabled                                                |
+| reactionsEnabled       | boolean   | true                                | Flag indicating if the reactions feature should be enabled                                             |
 | pipEnabled             | boolean   | true (android)                      | Flag indicating if Picture-in-Picture should be enabled (only Android)                                 |
 
 ## UserInfo
