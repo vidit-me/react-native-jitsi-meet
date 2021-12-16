@@ -28,6 +28,8 @@ export interface JitsiMeetConferenceOptions {
   chatEnabled?: boolean;
   lobbyModeEnabled?: boolean;
   pipEnabled?: boolean;
+  speakerstatsEnabled?: boolean;
+  reactionsEnabled?: boolean;
 }
 
 export interface ConferenceJoinedEvent {
