@@ -139,6 +139,10 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
           builder.setFeatureFlag("speakerstats.enabled", options.getBoolean("speakerstatsEnabled"));
         }
 
+        if (options.hasKey("reactionsEnabled")) {
+          builder.setFeatureFlag("reactions.enabled", options.getBoolean("reactions.enabled"));
+        }
+
         builder.setFeatureFlag("pip.enabled", !options.hasKey("pipEnabled") || options.getBoolean("pipEnabled"));
 
         JitsiMeetActivityExtended.launch(getReactApplicationContext(), builder.build());
