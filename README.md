@@ -116,11 +116,11 @@ This will create a navigation controller to be able to navigate between the Jits
 <string>Calendar Permission</string>
 ```
 
-4.) Modify your platform version in Podfile and Xcode to have platform version `11.0` or above.
+4.) Modify your platform version in Podfile and Xcode to have platform version `12.0` or above.
 
-![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-12%20a%CC%80s%2000.13.47.png?alt=media&token=94b05c65-57e8-44ed-ab8f-5aca47a4e420)
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.44.57.png?alt=media&token=c653bdbb-f08b-4e6a-a571-0f0894a12997)
 
-![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-12%20a%CC%80s%2000.12.52.png?alt=media&token=498ce1cd-1b4e-4f42-845e-9adcce6e3d5f)
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.45.25.png?alt=media&token=d97bfa72-d583-4046-88fd-a3d1c290834d)
 
 5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
