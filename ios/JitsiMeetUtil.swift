@@ -96,7 +96,11 @@ struct JitsiMeetUtil {
       }
 
       if let speakerstatsEnabled = options["speakerstatsEnabled"] as? Bool {
-        builder.setFeatureFlag("speakerstats.enabled", withBoolean: lobbyModeEnabled)
+        builder.setFeatureFlag("speakerstats.enabled", withBoolean: speakerstatsEnabled)
+      }
+
+      if let reactionsEnabled = options["reactionsEnabled"] as? Bool {
+        builder.setFeatureFlag("reactions.enabled", withBoolean: reactionsEnabled)
       }
       
       builder.setFeatureFlag("pip.enabled", withValue: false)
