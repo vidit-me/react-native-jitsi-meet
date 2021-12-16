@@ -20,7 +20,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
         handlePictureInPicture();
     }
 
-    public static void launch(Context context, JitsiMeetConferenceOptions options) {
+    public static void launch(Context context, RNJitsiMeetConferenceOptions options) {
         Intent intent = new Intent(context, JitsiMeetActivityExtended.class);
 
         intent.setAction("org.jitsi.meet.CONFERENCE");
@@ -34,7 +34,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
     }
 
     private void handlePictureInPicture() {
-        JitsiMeetConferenceOptions conferenceOptions = (JitsiMeetConferenceOptions)getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
+        RNJitsiMeetConferenceOptions conferenceOptions = getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
 
         if (conferenceOptions != null) {
             Bundle flags = conferenceOptions.getFeatureFlags();
