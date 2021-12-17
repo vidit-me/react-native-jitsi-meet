@@ -15,7 +15,7 @@ class JitsiMeetViewController: UIViewController {
 }
 
 extension JitsiMeetViewController: JitsiMeetViewDelegate {
-  func conferenceTerminated(_ data: [AnyHashable : Any]!) {
+  func ready(toClose data: [AnyHashable : Any]!) {
     DispatchQueue.main.async {
         let rootViewController = UIApplication.shared.delegate?.window??.rootViewController as! UINavigationController
         rootViewController.popViewController(animated: false)
