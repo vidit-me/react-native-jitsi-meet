@@ -195,23 +195,29 @@ public class JitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> {
       BroadcastEvent event = new BroadcastEvent(intent);
       WritableMap eventMap = Arguments.createMap();
 
-      eventMap.putString("url", (String) event.getData().get("url"));
-      eventMap.putString("error", (String) event.getData().get("error"));
-
       switch (event.getType()) {
         case CONFERENCE_JOINED:
+          eventMap.putString("url", (String) event.getData().get("url"));
+          eventMap.putString("error", (String) event.getData().get("error"));
+
           reactApplicationContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             jitsiMeetView.getId(),
             "onConferenceJoined",
             eventMap);
           break;
         case CONFERENCE_TERMINATED:
+          eventMap.putString("url", (String) event.getData().get("url"));
+          eventMap.putString("error", (String) event.getData().get("error"));
+
           reactApplicationContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             jitsiMeetView.getId(),
             "onConferenceTerminated",
             eventMap);
           break;
         case CONFERENCE_WILL_JOIN:
+          eventMap.putString("url", (String) event.getData().get("url"));
+          eventMap.putString("error", (String) event.getData().get("error"));
+
           reactApplicationContext.getJSModule(RCTEventEmitter.class).receiveEvent(
             jitsiMeetView.getId(),
             "onConferenceWillJoin",
