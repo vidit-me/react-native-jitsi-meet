@@ -20,22 +20,28 @@ function App() {
       Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS).
       It doesn't require rendering JitsiMeetView Component.  
     */
-    JitsiMeet.launch(conferenceOptions);
-  };
 
-  const startJitsiView = () => {
-    setShowJitsiView(true);
+    JitsiMeet.launch({
+      room: 'ReactNativeJitsiRoom',
+      userInfo: {
+        displayName: 'React Native Jitsi Meet Example',
+        email: 'example@test.com',
+        avatar: 'https://picsum.photos/200',
+      },
+      pipEnabled: false,
+    });
   };
-
-  const onConferenceTerminated = () => setShowJitsiView(false);
 
   if (showJitsiView) {
     /* Mode 2 - Starts Jitsi as a RN View */
+
     return (
       <JitsiMeetView
         style={styles.jitsiMeetView}
         options={conferenceOptions}
-        onConferenceTerminated={onConferenceTerminated}
+        onConferenceTerminated={(e) => setShowJitsiView(false)}
+        onConferenceJoined={(e) => console.log(e.nativeEvent)}
+        onConferenceWillJoin={(e) => console.log(e.nativeEvent)}
       />
     );
   }
@@ -54,7 +60,7 @@ function App() {
         </Text>
       </Pressable>
       <Pressable
-        onPress={startJitsiView}
+        onPress={() => setShowJitsiView(true)}
         style={({ pressed }) => [
           styles.pressable,
           { opacity: pressed ? 0.5 : 1 },
