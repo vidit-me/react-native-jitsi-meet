@@ -32,20 +32,19 @@ export interface JitsiMeetConferenceOptions {
   reactionsEnabled?: boolean;
 }
 
-export interface ConferenceJoinedEvent {
-  url: string;
-}
-
-export interface ConferenceTerminatedEvent extends ConferenceJoinedEvent {
-  error?: string;
+interface JitsiMeetEvent {
+  nativeEvent: {
+    error?: string;
+    url?: string;
+  };
 }
 
 export interface JitsiMeetViewProps {
   options: JitsiMeetConferenceOptions;
   style?: StyleProp<ViewStyle>;
-  onConferenceTerminated?: (e: ConferenceTerminatedEvent) => void;
-  onConferenceJoined?: (e: ConferenceJoinedEvent) => void;
-  onConferenceWillJoin?: (e: ConferenceJoinedEvent) => void;
+  onConferenceTerminated?: (e: JitsiMeetEvent) => void;
+  onConferenceJoined?: (e: JitsiMeetEvent) => void;
+  onConferenceWillJoin?: (e: JitsiMeetEvent) => void;
 }
 
 export interface JitsiMeetType {
