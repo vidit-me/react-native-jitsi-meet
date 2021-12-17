@@ -39,7 +39,7 @@ function App() {
       <JitsiMeetView
         style={styles.jitsiMeetView}
         options={conferenceOptions}
-        onConferenceTerminated={(e) => setShowJitsiView(false)}
+        onConferenceTerminated={(_) => setShowJitsiView(false)}
         onConferenceJoined={(e) => console.log(e.nativeEvent)}
         onConferenceWillJoin={(e) => console.log(e.nativeEvent)}
       />
