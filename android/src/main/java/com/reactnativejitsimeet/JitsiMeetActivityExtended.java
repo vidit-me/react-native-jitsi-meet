@@ -6,48 +6,47 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import org.jitsi.meet.sdk.JitsiMeetActivity;
-import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetView;
 
 public class JitsiMeetActivityExtended extends JitsiMeetActivity {
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  protected void onUserLeaveHint() {
+    handlePictureInPicture();
+  }
+
+  public static void launch(Context context, RNJitsiMeetConferenceOptions options) {
+    Intent intent = new Intent(context, JitsiMeetActivityExtended.class);
+
+    intent.setAction("org.jitsi.meet.CONFERENCE");
+    intent.putExtra("JitsiMeetConferenceOptions", options);
+
+    if (!(context instanceof Activity)) {
+      intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
     }
 
-    @Override
-    protected void onUserLeaveHint() {
-        handlePictureInPicture();
-    }
+    context.startActivity(intent);
+  }
 
-    public static void launch(Context context, RNJitsiMeetConferenceOptions options) {
-        Intent intent = new Intent(context, JitsiMeetActivityExtended.class);
+  private void handlePictureInPicture() {
+    RNJitsiMeetConferenceOptions conferenceOptions = getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
 
-        intent.setAction("org.jitsi.meet.CONFERENCE");
-        intent.putExtra("JitsiMeetConferenceOptions", options);
+    if (conferenceOptions != null) {
+      Bundle flags = conferenceOptions.getFeatureFlags();
 
-        if (!(context instanceof Activity)) {
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      if (flags != null) {
+        if (flags.getBoolean("pip.enabled")) {
+          JitsiMeetView view = this.getJitsiView();
+
+          if (view != null) {
+            view.enterPictureInPicture();
+          }
         }
-
-        context.startActivity(intent);
+      }
     }
-
-    private void handlePictureInPicture() {
-        RNJitsiMeetConferenceOptions conferenceOptions = getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
-
-        if (conferenceOptions != null) {
-            Bundle flags = conferenceOptions.getFeatureFlags();
-
-            if (flags != null) {
-                if (flags.getBoolean("pip.enabled")) {
-                    JitsiMeetView view = this.getJitsiView();
-
-                    if (view != null) {
-                        view.enterPictureInPicture();
-                    }
-                }
-            }
-        }
-    }
+  }
 }

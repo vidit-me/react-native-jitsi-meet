@@ -7,68 +7,68 @@ import java.util.Collections;
 import java.util.HashSet;
 
 class RNOngoingConferenceTracker {
-    private static final RNOngoingConferenceTracker instance = new RNOngoingConferenceTracker();
+  private static final RNOngoingConferenceTracker instance = new RNOngoingConferenceTracker();
 
-    private static final String CONFERENCE_WILL_JOIN = "CONFERENCE_WILL_JOIN";
-    private static final String CONFERENCE_TERMINATED = "CONFERENCE_TERMINATED";
+  private static final String CONFERENCE_WILL_JOIN = "CONFERENCE_WILL_JOIN";
+  private static final String CONFERENCE_TERMINATED = "CONFERENCE_TERMINATED";
 
-    private final Collection<OngoingConferenceListener> listeners =
-            Collections.synchronizedSet(new HashSet<OngoingConferenceListener>());
-    private String currentConference;
+  private final Collection<OngoingConferenceListener> listeners =
+    Collections.synchronizedSet(new HashSet<>());
+  private String currentConference;
 
-    public RNOngoingConferenceTracker() {
+  public RNOngoingConferenceTracker() {
+  }
+
+  public static RNOngoingConferenceTracker getInstance() {
+    return instance;
+  }
+
+  synchronized String getCurrentConference() {
+    return currentConference;
+  }
+
+  synchronized void onExternalAPIEvent(String name, ReadableMap data) {
+    if (!data.hasKey("url")) {
+      return;
     }
 
-    public static RNOngoingConferenceTracker getInstance() {
-        return instance;
+    String url = data.getString("url");
+    if (url == null) {
+      return;
     }
 
-    synchronized String getCurrentConference() {
-        return currentConference;
-    }
+    switch (name) {
+      case CONFERENCE_WILL_JOIN:
+        currentConference = url;
+        updateListeners();
+        break;
 
-    synchronized void onExternalAPIEvent(String name, ReadableMap data) {
-        if (!data.hasKey("url")) {
-            return;
+      case CONFERENCE_TERMINATED:
+        if (url.equals(currentConference)) {
+          currentConference = null;
+          updateListeners();
         }
-
-        String url = data.getString("url");
-        if (url == null) {
-            return;
-        }
-
-        switch(name) {
-            case CONFERENCE_WILL_JOIN:
-                currentConference = url;
-                updateListeners();
-                break;
-
-            case CONFERENCE_TERMINATED:
-                if (url.equals(currentConference)) {
-                    currentConference = null;
-                    updateListeners();
-                }
-                break;
-        }
+        break;
     }
+  }
 
-    void addListener(OngoingConferenceListener listener) {
-        listeners.add(listener);
-    }
+  void addListener(OngoingConferenceListener listener) {
+    listeners.add(listener);
+  }
 
-    void removeListener(OngoingConferenceListener listener) {
-        listeners.remove(listener);
-    }
+  void removeListener(OngoingConferenceListener listener) {
+    listeners.remove(listener);
+  }
 
-    private void updateListeners() {
-        synchronized (listeners) {
-            for (OngoingConferenceListener listener : listeners) {
-                listener.onCurrentConferenceChanged(currentConference);
-            }
-        }
+  private void updateListeners() {
+    synchronized (listeners) {
+      for (OngoingConferenceListener listener : listeners) {
+        listener.onCurrentConferenceChanged(currentConference);
+      }
     }
+  }
 
-    public interface OngoingConferenceListener {
-        void onCurrentConferenceChanged(String conferenceUrl);
-    }
+  public interface OngoingConferenceListener {
+    void onCurrentConferenceChanged(String conferenceUrl);
+  }
 }
