@@ -45,15 +45,7 @@ function App() {
       It doesn't require rendering JitsiMeetView Component.  
     */
 
-    JitsiMeet.launch({
-      room: 'ReactNativeJitsiRoom',
-      userInfo: {
-        displayName: 'React Native Jitsi Meet Example',
-        email: 'example@test.com',
-        avatar: 'https://picsum.photos/200',
-      },
-      pipEnabled: false,
-    });
+    JitsiMeet.launch(conferenceOptions);
   };
 
   if (showJitsiView) {
