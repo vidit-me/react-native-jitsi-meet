@@ -21,10 +21,10 @@ The package can be invoked in two modes
 1. As a new Activity/UIViewController on top of RN Application
 2. As a RN View
 
-```js
+```jsx
 import JitsiMeet, { JitsiMeetView } from '@bortolilucas/react-native-jitsimeet';
 import React, { useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, View, Pressable, Text } from 'react-native';
 
 const conferenceOptions = {
   room: 'ReactNativeJitsiRoom',
@@ -41,30 +41,82 @@ function App() {
 
   const startJitsiAsNativeController = () => {
     /* 
-      Mode 1 - Starts a new Jitsi Activity/UIViewController 
-      on top of RN Application (outside of JS). 
-      It doesn't require rendering <JitsiMeetView />.  
+      Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS).
+      It doesn't require rendering JitsiMeetView Component.  
     */
-    JitsiMeet.launch(conferenceOptions);
+
+    JitsiMeet.launch({
+      room: 'ReactNativeJitsiRoom',
+      userInfo: {
+        displayName: 'React Native Jitsi Meet Example',
+        email: 'example@test.com',
+        avatar: 'https://picsum.photos/200',
+      },
+      pipEnabled: false,
+    });
   };
 
-  const startJitsiView = () => setShowJitsiView(true);
+  if (showJitsiView) {
+    /* Mode 2 - Starts Jitsi as a RN View */
 
-  const onConferenceTerminated = () => setShowJitsiView(false);
-
-  return (
-    showJitsiView && (
-      /* Mode 2 - Starts Jitsi as a RN View */
+    return (
       <JitsiMeetView
         style={styles.jitsiMeetView}
         options={conferenceOptions}
-        onConferenceTerminated={onConferenceTerminated}
+        onConferenceTerminated={(_) => setShowJitsiView(false)}
+        onConferenceJoined={(e) => console.log(e.nativeEvent)}
+        onConferenceWillJoin={(e) => console.log(e.nativeEvent)}
       />
-    )
+    );
+  }
+
+  return (
+    <View style={styles.container}>
+      <Pressable
+        onPress={startJitsiAsNativeController}
+        style={({ pressed }) => [
+          styles.pressable,
+          { opacity: pressed ? 0.5 : 1 },
+        ]}
+      >
+        <Text style={styles.pressableText}>
+          Start Jitsi on top of RN Application
+        </Text>
+      </Pressable>
+      <Pressable
+        onPress={() => setShowJitsiView(true)}
+        style={({ pressed }) => [
+          styles.pressable,
+          { opacity: pressed ? 0.5 : 1 },
+        ]}
+      >
+        <Text style={styles.pressableText}>Start Jitsi as a RN View</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  pressable: {
+    width: '80%',
+    borderRadius: 15,
+    height: 50,
+    marginVertical: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'blue',
+  },
+  pressableText: {
+    fontSize: 17,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: '#fff',
+  },
   jitsiMeetView: {
     flex: 1,
   },
