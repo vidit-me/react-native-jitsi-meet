@@ -168,7 +168,7 @@ This will create a navigation controller to be able to navigate between the Jits
 
 5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
-6.) In Xcode, under `Signing & Capabilities` add the capability `Background Modes` and check `VoIP`. Otherwise, it won't work well in background.
+6.) In Xcode, under `Signing & Capabilities` add the capability `Background Modes` and check `Voice over IP`. Otherwise, it won't work well in background.
 
 7.) Clean your project and run `npx pod-install`.
 
