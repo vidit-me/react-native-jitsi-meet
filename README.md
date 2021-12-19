@@ -12,7 +12,9 @@ or
 npm i --save @bortolilucas/react-native-jitsimeet
 ```
 
-Only supports React Native >= 0.60.
+### Important
+
+There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons dont't respond and other bugs, so until the issue is sorted out it is advised to use `RN 0.63`
 
 ## Usage
 
@@ -173,10 +175,6 @@ This will create a navigation controller to be able to navigate between the Jits
 7.) Clean your project and run `npx pod-install`.
 
 ## Android install
-
-### Important
-
-There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons dont't respond and other bugs, so until the issue is sorted out it is advised to use the `RN 0.63`
 
 1.) In `android/app/build.gradle`, add/replace the following lines:
 
