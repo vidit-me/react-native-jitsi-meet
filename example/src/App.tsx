@@ -21,7 +21,7 @@ function App() {
       It doesn't require rendering JitsiMeetView Component.  
     */
 
-    JitsiMeet.launch(conferenceOptions);
+    JitsiMeet.launchJitsiMeetView(conferenceOptions);
   };
 
   if (showJitsiView) {

@@ -3,7 +3,7 @@ import JitsiMeetSDK
 
 @objc(JitsiMeet)
 class JitsiMeet: NSObject {
-  @objc func launch(_ options: NSDictionary) {
+  @objc func launchJitsiMeetView(_ options: NSDictionary) {
     DispatchQueue.main.async {
       let rootViewController = UIApplication.shared.delegate?.window??.rootViewController as! UINavigationController
       let vc = JitsiMeetViewController()
@@ -13,6 +13,10 @@ class JitsiMeet: NSObject {
                 
       rootViewController.pushViewController(vc, animated: false)
     }
+  }
+
+  @objc func launch(_ options: NSDictionary) {
+    launchJitsiMeetView(options)
   }
   
   @objc
