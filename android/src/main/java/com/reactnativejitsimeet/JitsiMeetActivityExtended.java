@@ -19,7 +19,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
     handlePictureInPicture();
   }
 
-  public static void launch(Context context, RNJitsiMeetConferenceOptions options) {
+  public static void launchExtended(Context context, RNJitsiMeetConferenceOptions options) {
     Intent intent = new Intent(context, JitsiMeetActivityExtended.class);
 
     intent.setAction("org.jitsi.meet.CONFERENCE");

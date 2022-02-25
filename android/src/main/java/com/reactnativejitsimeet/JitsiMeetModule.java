@@ -29,7 +29,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void launch(ReadableMap options) {
+  public void launchJitsiMeetView(ReadableMap options) {
     JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
     if (options.hasKey("room")) {
@@ -145,6 +145,6 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
     builder.setFeatureFlag("pip.enabled", !options.hasKey("pipEnabled") || options.getBoolean("pipEnabled"));
 
-    JitsiMeetActivityExtended.launch(getReactApplicationContext(), builder.build());
+    JitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
   }
 }

@@ -48,7 +48,7 @@ export interface JitsiMeetViewProps {
 }
 
 export interface JitsiMeetType {
-  launch: (options: JitsiMeetConferenceOptions) => void;
+  launchJitsiMeetView: (options: JitsiMeetConferenceOptions) => void;
 }
 
 export type JitsiMeetViewType = ComponentType<JitsiMeetViewProps>;
