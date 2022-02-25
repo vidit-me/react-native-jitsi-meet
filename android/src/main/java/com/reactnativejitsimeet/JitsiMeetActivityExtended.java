@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import org.jitsi.meet.sdk.JitsiMeetActivity;
+import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetView;
 
 public class JitsiMeetActivityExtended extends JitsiMeetActivity {
@@ -19,7 +20,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
     handlePictureInPicture();
   }
 
-  public static void launch(Context context, RNJitsiMeetConferenceOptions options) {
+  public static void launchExtended(Context context, JitsiMeetConferenceOptions options) {
     Intent intent = new Intent(context, JitsiMeetActivityExtended.class);
 
     intent.setAction("org.jitsi.meet.CONFERENCE");
@@ -33,7 +34,7 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
   }
 
   private void handlePictureInPicture() {
-    RNJitsiMeetConferenceOptions conferenceOptions = getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
+    JitsiMeetConferenceOptions conferenceOptions = getIntent().getParcelableExtra("JitsiMeetConferenceOptions");
 
     if (conferenceOptions != null) {
       Bundle flags = conferenceOptions.getFeatureFlags();

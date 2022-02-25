@@ -145,6 +145,6 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
     builder.setFeatureFlag("pip.enabled", !options.hasKey("pipEnabled") || options.getBoolean("pipEnabled"));
 
-    JitsiMeetActivityExtended.launch(getReactApplicationContext(), builder.build());
+    JitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
   }
 }
