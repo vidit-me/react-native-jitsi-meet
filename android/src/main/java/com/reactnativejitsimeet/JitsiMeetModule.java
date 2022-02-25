@@ -1,13 +1,21 @@
 package com.reactnativejitsimeet;
 
-import androidx.annotation.NonNull;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 
+import androidx.annotation.NonNull;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
 import com.facebook.react.module.annotations.ReactModule;
 
+import org.jitsi.meet.sdk.BroadcastEvent;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetUserInfo;
 
@@ -17,6 +25,8 @@ import java.net.URL;
 @ReactModule(name = JitsiMeetModule.NAME)
 public class JitsiMeetModule extends ReactContextBaseJavaModule {
   public static final String NAME = "JitsiMeet";
+
+  private BroadcastReceiver onConferenceTerminatedReceiver;
 
   public JitsiMeetModule(ReactApplicationContext reactContext) {
     super(reactContext);
@@ -29,7 +39,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void launchJitsiMeetView(ReadableMap options) {
+  public void launchJitsiMeetView(ReadableMap options, Callback onConferenceTerminated) {
     JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
     if (options.hasKey("room")) {
@@ -146,10 +156,46 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     builder.setFeatureFlag("pip.enabled", !options.hasKey("pipEnabled") || options.getBoolean("pipEnabled"));
 
     JitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
+
+    this.registerForBroadcastMessages(onConferenceTerminated);
+  }
+
+  @ReactMethod
+  public void launchJitsiMeetView(ReadableMap options) {
+    Callback noop = new Callback() {
+      @Override
+      public void invoke(Object... args) {
+
+      }
+    };
+
+    launchJitsiMeetView(options, noop);
+  }
+
+  @ReactMethod
+  public void launch(ReadableMap options, Callback onConferenceTerminated) {
+    launchJitsiMeetView(options, onConferenceTerminated);
   }
 
   @ReactMethod
   public void launch(ReadableMap options) {
     launchJitsiMeetView(options);
+  }
+
+  private void registerForBroadcastMessages(Callback onConferenceTerminated) {
+    onConferenceTerminatedReceiver = new BroadcastReceiver() {
+      @Override
+      public void onReceive(Context context, Intent intent) {
+        BroadcastEvent event = new BroadcastEvent(intent);
+
+        onConferenceTerminated.invoke(event.getType().getAction());
+
+        LocalBroadcastManager.getInstance(getReactApplicationContext()).unregisterReceiver(onConferenceTerminatedReceiver);
+      }
+    };
+
+    IntentFilter intentFilter = new IntentFilter(BroadcastEvent.Type.CONFERENCE_TERMINATED.getAction());
+
+    LocalBroadcastManager.getInstance(getReactApplicationContext()).registerReceiver(this.onConferenceTerminatedReceiver, intentFilter);
   }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import org.jitsi.meet.sdk.BroadcastEvent;
 import org.jitsi.meet.sdk.JitsiMeetActivity;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetView;
@@ -13,6 +14,14 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+  }
+
+  @Override
+  public void onDestroy() {
+    super.onDestroy();
+
+    Intent conferenceTerminatedBroadcast = new Intent(BroadcastEvent.Type.CONFERENCE_TERMINATED.getAction());
+    getApplicationContext().sendBroadcast(conferenceTerminatedBroadcast);
   }
 
   @Override
