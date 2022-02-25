@@ -14,6 +14,10 @@ class JitsiMeet: NSObject {
       rootViewController.pushViewController(vc, animated: false)
     }
   }
+
+  @objc func launch(_ options: NSDictionary) {
+    launchJitsiMeetView(options)
+  }
   
   @objc
   static func requiresMainQueueSetup() -> Bool {

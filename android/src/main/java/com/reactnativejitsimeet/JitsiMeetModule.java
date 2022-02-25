@@ -147,4 +147,9 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
     JitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
   }
+
+  @ReactMethod
+  public void launch(ReadableMap options) {
+    launchJitsiMeetView(options)
+  }
 }
