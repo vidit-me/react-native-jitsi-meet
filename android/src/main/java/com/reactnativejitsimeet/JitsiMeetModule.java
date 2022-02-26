@@ -150,6 +150,6 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void launch(ReadableMap options) {
-    launchJitsiMeetView(options)
+    launchJitsiMeetView(options);
   }
 }
