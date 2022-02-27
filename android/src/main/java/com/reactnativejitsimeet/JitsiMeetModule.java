@@ -8,7 +8,7 @@ import android.content.IntentFilter;
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import com.facebook.react.bridge.Callback;
+import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
@@ -39,7 +39,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void launchJitsiMeetView(ReadableMap options, Callback onConferenceTerminated) {
+  public void launchJitsiMeetView(ReadableMap options, Promise onConferenceTerminated) {
     JitsiMeetConferenceOptions.Builder builder = new JitsiMeetConferenceOptions.Builder();
 
     if (options.hasKey("room")) {
@@ -157,38 +157,21 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
     JitsiMeetActivityExtended.launchExtended(getReactApplicationContext(), builder.build());
 
-    this.registerForBroadcastMessages(onConferenceTerminated);
+    this.registerOnConferenceTerminatedListener(onConferenceTerminated);
   }
 
   @ReactMethod
-  public void launchJitsiMeetView(ReadableMap options) {
-    Callback noop = new Callback() {
-      @Override
-      public void invoke(Object... args) {
-
-      }
-    };
-
-    launchJitsiMeetView(options, noop);
-  }
-
-  @ReactMethod
-  public void launch(ReadableMap options, Callback onConferenceTerminated) {
+  public void launch(ReadableMap options, Promise onConferenceTerminated) {
     launchJitsiMeetView(options, onConferenceTerminated);
   }
 
-  @ReactMethod
-  public void launch(ReadableMap options) {
-    launchJitsiMeetView(options);
-  }
-
-  private void registerForBroadcastMessages(Callback onConferenceTerminated) {
+  private void registerOnConferenceTerminatedListener(Promise onConferenceTerminated) {
     onConferenceTerminatedReceiver = new BroadcastReceiver() {
       @Override
       public void onReceive(Context context, Intent intent) {
         BroadcastEvent event = new BroadcastEvent(intent);
 
-        onConferenceTerminated.invoke(event.getType().getAction());
+        onConferenceTerminated.resolve(null);
 
         LocalBroadcastManager.getInstance(getReactApplicationContext()).unregisterReceiver(onConferenceTerminatedReceiver);
       }

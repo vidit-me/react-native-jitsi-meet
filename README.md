@@ -41,13 +41,19 @@ const conferenceOptions = {
 function App() {
   const [showJitsiView, setShowJitsiView] = useState(false);
 
-  const startJitsiAsNativeController = () => {
+  const startJitsiAsNativeController = async () => {
     /* 
       Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS).
-      It doesn't require rendering JitsiMeetView Component.  
+      It doesn't require rendering JitsiMeetView Component.
     */
 
-    JitsiMeet.launchJitsiMeetView(conferenceOptions);
+    await JitsiMeet.launchJitsiMeetView(conferenceOptions);
+
+    /*
+      Note:
+        JitsiMeet.launchJitsiMeetView will return a promise, which is resolved once the conference is terminated and the JitsiMeetView is dismissed.
+    */
+
   };
 
   if (showJitsiView) {

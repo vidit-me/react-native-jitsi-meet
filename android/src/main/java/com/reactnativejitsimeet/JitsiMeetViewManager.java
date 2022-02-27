@@ -213,6 +213,11 @@ public class JitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> {
             jitsiMeetView.getId(),
             "onConferenceTerminated",
             eventMap);
+
+	  // The onConferenceTerminatedReceiver in JitsiMeetModule relies
+	  // on this broadcast event to resolve the launchJitsiMeetView promise.
+          Intent conferenceTerminatedBroadcast = new Intent(event.getType().getAction());
+          reactApplicationContext.sendBroadcast(conferenceTerminatedBroadcast);
           break;
         case CONFERENCE_WILL_JOIN:
           eventMap.putString("url", (String) event.getData().get("url"));

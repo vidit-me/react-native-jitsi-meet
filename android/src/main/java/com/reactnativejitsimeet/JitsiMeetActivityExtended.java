@@ -17,14 +17,6 @@ public class JitsiMeetActivityExtended extends JitsiMeetActivity {
   }
 
   @Override
-  public void onDestroy() {
-    super.onDestroy();
-
-    Intent conferenceTerminatedBroadcast = new Intent(BroadcastEvent.Type.CONFERENCE_TERMINATED.getAction());
-    getApplicationContext().sendBroadcast(conferenceTerminatedBroadcast);
-  }
-
-  @Override
   protected void onUserLeaveHint() {
     handlePictureInPicture();
   }
