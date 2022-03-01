@@ -35,7 +35,9 @@ const conferenceOptions = {
     email: 'example@test.com',
     avatar: 'https://picsum.photos/200',
   },
-  pipEnabled: false,
+  featureFlags: {
+    "live-streaming.enabled": false
+  }
 };
 
 function App() {
@@ -296,23 +298,12 @@ buildscript {
 | serverUrl              | string    | https://meet.jit.si                 | Valid server URL                                                                                       |
 | token                  | string    | ""                                  | JWT token                                                                                              |
 | userInfo               | object    | {}                                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo) |
-| screenSharingEnabled   | boolean   | true (android) false (iOS)          | Flag indicating if screen sharing should be enabled                                                    |
-| conferenceTimerEnabled | boolean   | true                                | Flag indicating if conference timer should be enabled                                                  |
-| addPeopleEnabled       | boolean   | true                                | Flag indicating if add-people functionality should be enabled                                          |
-| calendarEnabled        | boolean   | true (android) auto-detected (iOS)  | Flag indicating if calendar integration should be enabled                                              |
-| inviteEnabled          | boolean   | true                                | Flag indicating if invite functionality should be enabled                                              |
-| meetingPasswordEnabled | boolean   | true                                | Flag indicating if the meeting password button should be enabled                                       |
-| recordingEnabled       | boolean   | auto-detected (android) false (iOS) | Flag indicating if recording should be enabled                                                         |
-| liveStreamingEnabled   | boolean   | auto-detected                       | Flag indicating if live-streaming should be enabled                                                    |
-| raiseHandEnabled       | boolean   | true                                | Flag indicating if raise hand feature should be enabled                                                |
-| serverUrlChangeEnabled | boolean   | true                                | Flag indicating if server URL change is enabled                                                        |
-| videoShareEnabled      | boolean   | true                                | Flag indicating if the video share button should be enabled                                            |
-| securityOptionsEnabled | boolean   | true                                | Flag indicating if the security options button should be enabled                                       |
-| chatEnabled            | boolean   | true                                | Flag indicating if chat should be enabled                                                              |
-| lobbyModeEnabled       | boolean   | true                                | Flag indicating if lobby mode button should be enabled                                                 |
-| speakerstatsEnabled    | boolean   | true                                | Flag indicating if speaker statistics should be enabled                                                |
-| reactionsEnabled       | boolean   | true                                | Flag indicating if the reactions feature should be enabled                                             |
-| pipEnabled             | boolean   | true (android)                      | Flag indicating if Picture-in-Picture should be enabled (only Android)                                 |
+
+### Feature Flags
+
+For a full list of Feature Flags, see the [Jitsi Docs](https://jitsi.github.io/handbook/docs/dev-guide/mobile-feature-flags).
+
+For examples on how to set feature flags, see the [usage example](#usage) above.
 
 ## UserInfo
 
