@@ -36,8 +36,8 @@ const conferenceOptions = {
     avatar: 'https://picsum.photos/200',
   },
   featureFlags: {
-    "live-streaming.enabled": false
-  }
+    'live-streaming.enabled': false,
+  },
 };
 
 function App() {
@@ -55,7 +55,6 @@ function App() {
       Note:
         JitsiMeet.launchJitsiMeetView will return a promise, which is resolved once the conference is terminated and the JitsiMeetView is dismissed.
     */
-
   };
 
   if (showJitsiView) {
@@ -292,12 +291,12 @@ buildscript {
 
 ## Options
 
-| key                    | Data type | Default                             | Description                                                                                            |
-| ---------------------- | --------- | ----------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| room                   | string    | required                            | Room name for Jitsi Meet                                                                               |
-| serverUrl              | string    | https://meet.jit.si                 | Valid server URL                                                                                       |
-| token                  | string    | ""                                  | JWT token                                                                                              |
-| userInfo               | object    | {}                                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo) |
+| key       | Data type | Default             | Description                                                                                            |
+| --------- | --------- | ------------------- | ------------------------------------------------------------------------------------------------------ |
+| room      | string    | required            | Room name for Jitsi Meet                                                                               |
+| serverUrl | string    | https://meet.jit.si | Valid server URL                                                                                       |
+| token     | string    | ""                  | JWT token                                                                                              |
+| userInfo  | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo) |
 
 ### Feature Flags
 
@@ -354,7 +353,7 @@ yarn example android
 If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsimeet project implementation with the following code:
 
 ```groovy
-implementation(project(':react-native-jitsimeet')) {
+implementation(project(':bortolilucas_react-native-jitsimeet')) {
   // Un-comment below if using hermes
   exclude group: 'com.facebook',module:'hermes'
   // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors
