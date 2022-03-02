@@ -12,24 +12,7 @@ export interface JitsiMeetConferenceOptions {
   serverUrl?: string;
   userInfo?: JitsiMeetUserInfo;
   token?: string;
-  screenSharingEnabled?: boolean;
-  conferenceTimerEnabled?: boolean;
-  closeCaptionsEnabled?: boolean;
-  addPeopleEnabled?: boolean;
-  calendarEnabled?: boolean;
-  inviteEnabled?: boolean;
-  meetingPasswordEnabled?: boolean;
-  recordingEnabled?: boolean;
-  liveStreamingEnabled?: boolean;
-  raiseHandEnabled?: boolean;
-  serverUrlChangeEnabled?: boolean;
-  videoShareEnabled?: boolean;
-  securityOptionsEnabled?: boolean;
-  chatEnabled?: boolean;
-  lobbyModeEnabled?: boolean;
-  pipEnabled?: boolean;
-  speakerstatsEnabled?: boolean;
-  reactionsEnabled?: boolean;
+  featureFlags?: { [key: string]: boolean };
 }
 
 interface JitsiMeetEvent {
@@ -48,7 +31,7 @@ export interface JitsiMeetViewProps {
 }
 
 export interface JitsiMeetType {
-  launchJitsiMeetView: (options: JitsiMeetConferenceOptions) => void;
+  launchJitsiMeetView: (options: JitsiMeetConferenceOptions) => Promise<void>;
 }
 
 export type JitsiMeetViewType = ComponentType<JitsiMeetViewProps>;
