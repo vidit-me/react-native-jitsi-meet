@@ -3,16 +3,25 @@ import JitsiMeetSDK
 
 @objc(JitsiMeet)
 class JitsiMeet: NSObject {
-    @objc func launchJitsiMeetView(_ options: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
+    
+  var vc: JitsiMeetViewController?
+    
+  @objc func hangUp() {
+    self.vc?.jitsiMeetView?.hangUp()
+  }
+    
+  @objc func launchJitsiMeetView(_ options: NSDictionary, resolver resolve: @escaping RCTPromiseResolveBlock, rejecter reject: RCTPromiseRejectBlock) {
     DispatchQueue.main.async {
       let rootViewController = UIApplication.shared.delegate?.window??.rootViewController as! UINavigationController
-      let vc = JitsiMeetViewController()
+      let _vc = JitsiMeetViewController()
       
-      vc.resolver = resolve
-      vc.modalPresentationStyle = .fullScreen
-      vc.conferenceOptions = JitsiMeetUtil.buildConferenceOptions(options)
+      _vc.resolver = resolve
+      _vc.modalPresentationStyle = .fullScreen
+      _vc.conferenceOptions = JitsiMeetUtil.buildConferenceOptions(options)
                 
-      rootViewController.pushViewController(vc, animated: false)
+      rootViewController.pushViewController(_vc, animated: false)
+        
+        self.vc = _vc
     }
   }
 
