@@ -57,6 +57,13 @@ function App() {
     */
   };
 
+  /*
+    The localParticipant leaves the current conference.
+  */
+  const hangUp = () => {
+    JitsiMeet.hangUp();
+  }
+
   if (showJitsiView) {
     /* Mode 2 - Starts Jitsi as a RN View */
 
