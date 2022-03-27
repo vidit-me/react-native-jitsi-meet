@@ -12,10 +12,6 @@ or
 npm i --save @bortolilucas/react-native-jitsimeet
 ```
 
-### Important
-
-There seems to be an issue with `RN >= 0.64` and Jitsi SDK, as buttons dont't respond and other bugs, so until the issue is sorted out it is advised to use `RN 0.63`
-
 ## Usage
 
 The package can be invoked in two modes
@@ -62,7 +58,7 @@ function App() {
   */
   const hangUp = () => {
     JitsiMeet.hangUp();
-  }
+  };
 
   if (showJitsiView) {
     /* Mode 2 - Starts Jitsi as a RN View */
