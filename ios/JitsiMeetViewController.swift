@@ -4,9 +4,9 @@ import JitsiMeetSDK
 class JitsiMeetViewController: UIViewController {
   var conferenceOptions: JitsiMeetConferenceOptions?
   var resolver: RCTPromiseResolveBlock?
-  
+  var jitsiMeetView = JitsiMeetView()
+
   override func viewDidLoad() {
-    let jitsiMeetView = JitsiMeetView()
     
     jitsiMeetView.join(conferenceOptions)
     jitsiMeetView.delegate = self

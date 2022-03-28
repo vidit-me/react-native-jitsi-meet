@@ -32,6 +32,7 @@ export interface JitsiMeetViewProps {
 
 export interface JitsiMeetType {
   launchJitsiMeetView: (options: JitsiMeetConferenceOptions) => Promise<void>;
+  hangUp: () => void;
 }
 
 export type JitsiMeetViewType = ComponentType<JitsiMeetViewProps>;
