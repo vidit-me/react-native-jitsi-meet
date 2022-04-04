@@ -56,7 +56,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
-    implementation ('org.jitsi.react:jitsi-meet-sdk:5.0.0') {
+    implementation ('org.jitsi.react:jitsi-meet-sdk:5.0.2') {
         transitive = true
     }
 }
