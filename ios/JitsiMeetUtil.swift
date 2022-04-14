@@ -5,7 +5,7 @@ struct JitsiMeetUtil {
   static func buildConferenceOptions(_ options: NSDictionary) -> JitsiMeetConferenceOptions {
     return JitsiMeetConferenceOptions.fromBuilder { (builder) in
       guard let room = options["room"] as? String else {
-        fatalError("Room must no be empty")
+        fatalError("Room must not be empty")
       }
       
       builder.room = room
@@ -32,6 +32,23 @@ struct JitsiMeetUtil {
       
       if let token = options["token"] as? String {
         builder.token = token
+      }
+
+      // Set built-in config overrides
+      if let subject = options["subject"] as? String {
+        builder.subject = subject
+      }
+
+      if let audioOnly = options["audioOnly"] as? Bool {
+        builder.audioOnly = audioOnly
+      }
+
+      if let audioMuted = options["audioMuted"] as? Bool {
+        builder.audioMuted = audioMuted
+      }
+
+      if let videoMuted = options["videoMuted"] as? Bool {
+        builder.videoMuted = videoMuted
       }
         
       // Set the feature flags

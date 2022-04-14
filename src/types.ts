@@ -12,6 +12,10 @@ export interface JitsiMeetConferenceOptions {
   serverUrl?: string;
   userInfo?: JitsiMeetUserInfo;
   token?: string;
+  subject?: string;
+  audioOnly?: boolean;
+  audioMuted?: boolean;
+  videoMuted?: boolean;
   featureFlags?: { [key: string]: boolean };
 }
 

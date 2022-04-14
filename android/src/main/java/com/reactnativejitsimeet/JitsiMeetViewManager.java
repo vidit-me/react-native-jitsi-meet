@@ -109,9 +109,25 @@ public class JitsiMeetViewManager extends SimpleViewManager<RNJitsiMeetView> {
       }
     }
 
-
     if (options.hasKey("token")) {
       builder.setToken(options.getString("token"));
+    }
+
+    // Set built-in config overrides
+    if (options.hasKey("subject")) {
+      builder.setSubject(options.getString("subject"));
+    }
+
+    if (options.hasKey("audioOnly")) {
+      builder.setAudioOnly(options.getBoolean("audioOnly"));
+    }
+
+    if (options.hasKey("audioMuted")) {
+      builder.setAudioMuted(options.getBoolean("audioMuted"));
+    }
+    
+    if (options.hasKey("videoMuted")) {
+      builder.setVideoMuted(options.getBoolean("videoMuted"));
     }
 
     // Set the feature flags
