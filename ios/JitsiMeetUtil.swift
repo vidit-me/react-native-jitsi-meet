@@ -36,19 +36,19 @@ struct JitsiMeetUtil {
 
       // Set built-in config overrides
       if let subject = options["subject"] as? String {
-        builder.subject = subject
+        builder.setSubject(subject)
       }
 
       if let audioOnly = options["audioOnly"] as? Bool {
-        builder.audioOnly = audioOnly
+        builder.setAudioOnly(audioOnly)
       }
 
       if let audioMuted = options["audioMuted"] as? Bool {
-        builder.audioMuted = audioMuted
+        builder.setAudioMuted(audioMuted)
       }
 
       if let videoMuted = options["videoMuted"] as? Bool {
-        builder.videoMuted = videoMuted
+        builder.setVideoMuted(videoMuted)
       }
         
       // Set the feature flags
