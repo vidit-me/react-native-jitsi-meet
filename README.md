@@ -294,12 +294,17 @@ buildscript {
 
 ## Options
 
-| key       | Data type | Default             | Description                                                                                            |
-| --------- | --------- | ------------------- | ------------------------------------------------------------------------------------------------------ |
-| room      | string    | required            | Room name for Jitsi Meet                                                                               |
-| serverUrl | string    | https://meet.jit.si | Valid server URL                                                                                       |
-| token     | string    | ""                  | JWT token                                                                                              |
-| userInfo  | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo) |
+| key          | Data type | Default             | Description                                                                                                     |
+| ------------ | --------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| room         | string    | required            | Room name for Jitsi Meet                                                                                        |
+| serverUrl    | string    | https://meet.jit.si | Valid server URL                                                                                                |
+| token        | string    | ""                  | JWT token                                                                                                       |
+| subject      | string    | ""                  | Conference subject (will change the global subject for all participants)                                        |
+| audioOnly    | boolean   | false               | Controls whether the participant will join the conference in audio-only mode (no video is sent or recieved)     |
+| audioMuted   | boolean   | false               | Controls whether the participant will join the conference with the microphone muted                             |
+| videoMuted   | boolean   | false               | Controls whether the participant will join the conference with the camera muted                                 |
+| userInfo     | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo)          |
+| featureFlags | object    | {}                  | Object that contains information about which feature flags should be set. See below for more info.              |
 
 ### Feature Flags
 
