@@ -3,6 +3,10 @@
 
 React Native Wrapper for Jitsi Meet SDK.
 
+How this wrapper is different:
+1. We have implemented broadcast actions.
+2. Maintained by a startup that uses Jitsi solutions.
+
 ## Install
 
 ```sh
