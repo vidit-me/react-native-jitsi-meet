@@ -42,7 +42,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void hangUp() {
-    Intent hangUpBroadcastIntent = new Intent("org.jitsi.meet.HANG_UP");
+    Intent hangUpBroadcastIntent = new  Intent("org.jitsi.meet.HANG_UP");
     LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(hangUpBroadcastIntent);
   }
 
