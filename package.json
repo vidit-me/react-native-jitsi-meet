@@ -1,6 +1,6 @@
 {
   "name": "@vidit-me/react-native-jitsi-meet",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "React native Wrapper for Jitsi Meet SDK",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
