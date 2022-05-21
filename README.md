@@ -5,11 +5,11 @@ React Native Wrapper for Jitsi Meet SDK.
 ## Install
 
 ```sh
-yarn add @bortolilucas/react-native-jitsimeet
+yarn add @vidit-me/react-native-jitsi-meet
 
 or
 
-npm i --save @bortolilucas/react-native-jitsimeet
+npm i --save @vidit-me/react-native-jitsi-meet
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ The package can be invoked in two modes
 2. As a RN View
 
 ```jsx
-import JitsiMeet, { JitsiMeetView } from '@bortolilucas/react-native-jitsimeet';
+import JitsiMeet, { JitsiMeetView } from '@vidit-me/react-native-jitsi-meet';
 import React, { useState } from 'react';
 import { StyleSheet, View, Pressable, Text } from 'react-native';
 
@@ -174,9 +174,9 @@ This will create a navigation controller to be able to navigate between the Jits
 
 4.) Modify your platform version in Podfile and Xcode to have platform version `12.0` or above.
 
-![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.44.57.png?alt=media&token=c653bdbb-f08b-4e6a-a571-0f0894a12997)
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsi-meet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.44.57.png?alt=media&token=c653bdbb-f08b-4e6a-a571-0f0894a12997)
 
-![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsimeet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.45.25.png?alt=media&token=d97bfa72-d583-4046-88fd-a3d1c290834d)
+![](https://firebasestorage.googleapis.com/v0/b/react-native-jitsi-meet.appspot.com/o/Captura%20de%20Tela%202021-12-16%20a%CC%80s%2016.45.25.png?alt=media&token=d97bfa72-d583-4046-88fd-a3d1c290834d)
 
 5.) In Xcode, under `Build settings` set `Enable Bitcode` to `No` and `Always Embed Swift Standard Libraries` to `Yes`.
 
@@ -331,13 +331,13 @@ On iOS it requires a few extra steps. Set the flag `screenSharingEnabled` to tru
 1.) Clone this project
 
 ```bash
-git clone https://github.com/bortolilucas/react-native-jitsimeet.git
+git clone https://github.com/vidit-me/react-native-jitsi-meet.git
 ```
 
 2.) Navigate to the project folder
 
 ```bash
-cd react-native-jitsimeet
+cd react-native-jitsi-meet
 ```
 
 3.) Install dependencies
@@ -358,10 +358,10 @@ yarn example android
 
 ## Troubleshooting
 
-If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsimeet project implementation with the following code:
+If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsi-meet project implementation with the following code:
 
 ```groovy
-implementation(project(':bortolilucas_react-native-jitsimeet')) {
+implementation(project(':vidit-me_react-native-jitsi-meet')) {
   // Un-comment below if using hermes
   exclude group: 'com.facebook',module:'hermes'
   // Un-comment any packages below that you have added to your project to prevent `duplicate_classes` errors

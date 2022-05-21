@@ -3,7 +3,7 @@ require "json"
 package = JSON.parse(File.read(File.join(__dir__, "package.json")))
 
 Pod::Spec.new do |s|
-  s.name         = "react-native-jitsimeet"
+  s.name         = "react-native-jitsi-meet"
   s.version      = package["version"]
   s.summary      = package["description"]
   s.homepage     = package["homepage"]
@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
   s.authors      = package["author"]
 
   s.platforms    = { :ios => "12.0" }
-  s.source       = { :git => "https://github.com/bortolilucas/react-native-jitsimeet.git", :tag => "#{s.version}" }
+  s.source       = { :git => "https://github.com/vidit-me/react-native-jitsi-meet.git", :tag => "#{s.version}" }
 
   s.source_files = "ios/**/*.{h,m,mm,swift}"
 
   s.dependency "React-Core"
-  s.dependency 'JitsiMeetSDK', '5.0.2'
+  s.dependency 'JitsiMeetSDK', '5.1.0'
 end
