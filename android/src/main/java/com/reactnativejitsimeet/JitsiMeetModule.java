@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import com.facebook.react.bridge.Promise;
@@ -43,7 +42,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
   @Deprecated
   @ReactMethod
   public void hangUp() {
-    Intent hangUpBroadcastIntent = new  Intent("org.jitsi.meet.SET_VIDEO_MUTED");
+    Intent hangUpBroadcastIntent = new  Intent("org.jitsi.meet.HANG_UP");
     LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(hangUpBroadcastIntent);
   }
 
@@ -53,15 +52,12 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     while (actionsIterator.hasNextKey()) {
       String key = actionsIterator.nextKey();
       Intent genericBroadcastIntent = new Intent("org.jitsi.meet." + key);
-
-
       if(!actions.isNull(key)) {
         ReadableMap valueMap = actions.getMap(key);
         ReadableMapKeySetIterator valueIterator = valueMap.keySetIterator();
         while (valueIterator.hasNextKey()) {
           String valKey = valueIterator.nextKey();
           ReadableType type = valueMap.getType(valKey);
-
           switch (type) {
             case String:
               String stringVal = valueMap.getString(valKey);
@@ -78,8 +74,6 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
         }
 
       }
-
-
       LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(genericBroadcastIntent);
     }
   }
