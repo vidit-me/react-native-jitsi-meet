@@ -34,8 +34,39 @@ export interface JitsiMeetViewProps {
   onConferenceWillJoin?: (e: JitsiMeetEvent) => void;
 }
 
+export type ParticipantId = string;
+
+export interface BroadcastActions {
+  SET_AUDIO_MUTED?: {
+    muted: boolean;
+  };
+  SET_VIDEO_MUTED?: {
+    muted: boolean;
+  };
+  HANG_UP?: null;
+  SEND_ENDPOINT_TEXT_MESSAGE?: {
+    to?: ParticipantId;
+    message: string;
+  };
+  TOGGLE_SCREEN_SHARE?: {
+    enabled: boolean;
+  };
+  RETRIEVE_PARTICIPANTS_INFO?: {
+    requestId: string;
+  };
+  OPEN_CHAT?: {
+    to?: ParticipantId;
+  };
+  CLOSE_CHAT?: null;
+  SEND_CHAT_MESSAGE?: {
+    to?: ParticipantId;
+    message: string;
+  };
+}
 export interface JitsiMeetType {
   launchJitsiMeetView: (options: JitsiMeetConferenceOptions) => Promise<void>;
+  sendActions: (actions: BroadcastActions) => void;
+  // Deprecated
   hangUp: () => void;
 }
 

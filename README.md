@@ -1,3 +1,4 @@
+
 # React Native JitsiMeet
 
 React Native Wrapper for Jitsi Meet SDK.
@@ -38,7 +39,7 @@ const conferenceOptions = {
 
 function App() {
   const [showJitsiView, setShowJitsiView] = useState(false);
-
+  const [muted, setMuted] = React.useState(true);
   const startJitsiAsNativeController = async () => {
     /* 
       Mode 1 - Starts a new Jitsi Activity/UIViewController on top of RN Application (outside of JS).
@@ -56,9 +57,6 @@ function App() {
   /*
     The localParticipant leaves the current conference.
   */
-  const hangUp = () => {
-    JitsiMeet.hangUp();
-  };
 
   if (showJitsiView) {
     /* Mode 2 - Starts Jitsi as a RN View */
@@ -85,6 +83,21 @@ function App() {
       >
         <Text style={styles.pressableText}>
           Start Jitsi on top of RN Application
+        </Text>
+      </Pressable>
+       <Pressable
+        onPress={() => {
+	        JitsiMeet.sendActions({SET_VIDEO_MUTED: { muted: !muted}});
+	        setMuted(!muted);
+	        }
+        }
+        style={({ pressed }) => [
+          styles.pressable,
+          { opacity: pressed ? 0.5 : 1 },
+        ]}
+      >
+        <Text style={styles.pressableText}>
+          Toggle some controller
         </Text>
       </Pressable>
       <Pressable
@@ -292,7 +305,7 @@ buildscript {
 </manifest>
 ```
 
-## Options
+## Meeting Options
 
 | key          | Data type | Default             | Description                                                                                                     |
 | ------------ | --------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
@@ -306,13 +319,24 @@ buildscript {
 | userInfo     | object    | {}                  | Object that contains information about the participant starting the meeting. See [UserInfo](#userinfo)          |
 | featureFlags | object    | {}                  | Object that contains information about which feature flags should be set. See below for more info.              |
 
-### Feature Flags
-
-For a full list of Feature Flags, see the [Jitsi Docs](https://jitsi.github.io/handbook/docs/dev-guide/mobile-feature-flags).
+### Broadcast Actions - (Android only for the moment)
+See the [Jitsi Docs](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk/#broadcasting-actions).
 
 For examples on how to set feature flags, see the [usage example](#usage) above.
 
-## UserInfo
+| Key          | Value | Default             | Description                                                                                                     |
+| ------------ | --------- | ------------------- | --------------------------------------------------------------------------------------------------------------- |
+| SET_AUDIO_MUTED         | Object: { muted: boolean }    | false            | Sets the state of the localParticipant audio muted according to the  `muted`  parameter. Expects a  `muted`  key on the intent extra with a boolean value.                                                                                   |
+| SET_VIDEO_MUTED         | Object: { muted: boolean  }    | false            | Sets the state of the localParticipant audio muted according to the  `muted`  parameter. Expects a  `muted`  key on the intent extra with a boolean value.                                                                                   |
+| HANG_UP         | null   | -            | The localParticipant leaves the current conference. Expect null value.                                                                 |
+| SEND_ENDPOINT_TEXT_MESSAGE         | Object: { to?: ParticipantId; message: string; }    | false            | Sends a message via the data channel to one particular participant or to all of them. Expects a  `to`  key on the intent extra with the id of the participant to which the message is meant and a  `message`  key with a string value, the actual content of the message. If the  `to`  key is not present or it's value is empty, the message will be sent to all the participants in the conference. In order to get the participantId, the  `PARTICIPANT_JOINED`  event should be listened for, which  `data`  includes the id and this should be stored somehow.                                                                             |
+| TOGGLE_SCREEN_SHARE         | Object: { enabled: boolean  }    | false            | Sets the state of the localParticipant screen share according to the  `enabled`  parameter. Expects a  `enabled`  key on the intent extra with a boolean value.                                                                                  |
+| RETRIEVE_PARTICIPANTS_INFO         | Object: { requestId: string  }    | false            | Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event. Expects a  `requestId`  key on the intent extra with a string value, this parameter will be present on the PARTICIPANTS_INFO_RETRIEVED event.                                                                                  |
+| OPEN_CHAT         | Object: { to: ParticipantId  }    | {}            | Opens the chat dialog. If a `to` key is present with a valid participantId, the private chat for that particular participant will be opened.                                                                                  |
+| CLOSE_CHAT         | null   | -            | Closes the chat dialog. Expect null value.                                                  |
+
+
+## User Info
 
 | key         | Data type | Default | Description              |
 | ----------- | --------- | ------- | ------------------------ |
@@ -358,7 +382,7 @@ yarn example android
 
 ## Troubleshooting
 
-If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsi-meet project implementation with the following code:
+Android - If your having problems with `duplicate_classes` errors, try exclude them from the react-native-jitsi-meet project implementation with the following code:
 
 ```groovy
 implementation(project(':vidit-me_react-native-jitsi-meet')) {
@@ -376,3 +400,5 @@ implementation(project(':vidit-me_react-native-jitsi-meet')) {
   // exclude group: 'com.facebook.react',module:'react-native-sound'
 }
 ```
+
+-  Another problem is with the react-native-reanimated v2, for the moment the main Jitsi SDK doesn't support this version.

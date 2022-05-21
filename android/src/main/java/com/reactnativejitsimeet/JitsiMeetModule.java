@@ -4,23 +4,22 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-
+import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableMap;
+import com.facebook.react.bridge.ReadableType;
+import com.facebook.react.bridge.Callback;
 import com.facebook.react.bridge.ReadableMapKeySetIterator;
 import com.facebook.react.module.annotations.ReactModule;
-
 import org.jitsi.meet.sdk.BroadcastAction;
 import org.jitsi.meet.sdk.BroadcastEvent;
 import org.jitsi.meet.sdk.JitsiMeetConferenceOptions;
 import org.jitsi.meet.sdk.JitsiMeetUserInfo;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -40,11 +39,51 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     return NAME;
   }
 
+
+  @Deprecated
   @ReactMethod
   public void hangUp() {
-    Intent hangUpBroadcastIntent = new  Intent("org.jitsi.meet.HANG_UP");
+    Intent hangUpBroadcastIntent = new  Intent("org.jitsi.meet.SET_VIDEO_MUTED");
     LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(hangUpBroadcastIntent);
   }
+
+  @ReactMethod
+  public void sendActions(ReadableMap actions) {
+    ReadableMapKeySetIterator actionsIterator = actions.keySetIterator();
+    while (actionsIterator.hasNextKey()) {
+      String key = actionsIterator.nextKey();
+      Intent genericBroadcastIntent = new Intent("org.jitsi.meet." + key);
+
+
+      if(!actions.isNull(key)) {
+        ReadableMap valueMap = actions.getMap(key);
+        ReadableMapKeySetIterator valueIterator = valueMap.keySetIterator();
+        while (valueIterator.hasNextKey()) {
+          String valKey = valueIterator.nextKey();
+          ReadableType type = valueMap.getType(valKey);
+
+          switch (type) {
+            case String:
+              String stringVal = valueMap.getString(valKey);
+              genericBroadcastIntent.putExtra(valKey, stringVal);
+              break;
+            case Boolean:
+              Boolean booleanVal = valueMap.getBoolean(valKey);
+              genericBroadcastIntent.putExtra(valKey, booleanVal);
+              break;
+
+            default:
+              throw new IllegalArgumentException("Could not read object with key: " + key);
+          }
+        }
+
+      }
+
+
+      LocalBroadcastManager.getInstance(getReactApplicationContext()).sendBroadcast(genericBroadcastIntent);
+    }
+  }
+
 
   @ReactMethod
   public void launchJitsiMeetView(ReadableMap options, Promise onConferenceTerminated) {
@@ -105,7 +144,7 @@ public class JitsiMeetModule extends ReactContextBaseJavaModule {
     if (options.hasKey("audioMuted")) {
       builder.setAudioMuted(options.getBoolean("audioMuted"));
     }
-    
+
     if (options.hasKey("videoMuted")) {
       builder.setVideoMuted(options.getBoolean("videoMuted"));
     }
