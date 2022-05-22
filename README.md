@@ -409,3 +409,8 @@ implementation(project(':vidit-me_react-native-jitsi-meet')) {
 ```
 
 -  Another problem is with the react-native-reanimated v2, for the moment the main Jitsi SDK doesn't support this version.
+
+## TODO
+1. IOS broadcast actions support
+2. Add invoke feature to broadcast actions.
+
