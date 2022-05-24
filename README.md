@@ -413,4 +413,5 @@ implementation(project(':vidit-me_react-native-jitsi-meet')) {
 ## TODO
 1. IOS broadcast actions support
 2. Add invoke feature to broadcast actions.
+3. Update example project
 
